@@ -313,6 +313,7 @@ function _ipSend(href, title, from_greader)
         z = d.createElement('scr' + 'ipt'),
         
         url = getPatchedUrl(url);
+        canonical_url = getPatchedUrl(canonical_url);
 
         p = (from_greader ? 'gr=1&' : '') +
             '&u=' + e(url) + '&t=' + e(title) +
