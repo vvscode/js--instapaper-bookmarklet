@@ -310,7 +310,9 @@ function _ipSend(href, title, from_greader)
         x = d.selection,
         s = String(e ? e() : (k ? k() : (x ? x.createRange().text : ''))),
         e = encodeURIComponent,
-        z = d.createElement('scr'+'ipt'),
+        z = d.createElement('scr' + 'ipt'),
+        
+        url = getPatchedUrl(url);
 
         p = (from_greader ? 'gr=1&' : '') +
             '&u=' + e(url) + '&t=' + e(title) +
@@ -741,4 +743,15 @@ function _cl_close(cancel)
     }
 
     if (! cancel) overlayDone("Saved", btxTitle);
+}
+
+// Patched content placed below
+function getPatchedUrl(url) {
+    // add comments for habrahabr posts
+    let match = url.match(/habrahabr\.ru\/post\/(\d+)/);
+    if (match) {
+        return `http://vvscodetools.ru/instapaper_habr/?id=${match[1]}`;
+    }
+
+    return url;
 }
