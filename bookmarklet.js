@@ -747,5 +747,11 @@ function _cl_close(cancel)
 
 // Patched content placed below
 function getPatchedUrl(url) {
+    // add comments for habrahabr posts
+    let match = url.match(/habrahabr\.ru\/post\/(\d+)/);
+    if (match) {
+        return `http://vvscodetools.ru/instapaper_habr/?id=${match[1]}`;
+    }
+
     return url;
 }
